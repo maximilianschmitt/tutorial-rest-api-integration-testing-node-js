@@ -2,7 +2,9 @@
   "name": "todoman-backend",
   "scripts": {
     "dev": "nodemon src/main",
-    "test": "mocha  \"src/**/*.test.js\""
+    "test": "mocha  \"src/**/*.test.js\"",
+    "lint": "eslint .",
+    "precommit": "yarn lint && yarn test"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -13,9 +15,14 @@
     "axios": "^0.18.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "eslint": "^5.3.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
     "get-port": "^4.0.0",
+    "husky": "^0.14.3",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.18.3",
+    "prettier": "^1.14.2"
   },
   "prettier": {
     "singleQuote": true,
