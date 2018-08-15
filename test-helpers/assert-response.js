@@ -19,3 +19,20 @@ exports.isValidationError = async function isValidationError(
     )
   })
 }
+
+exports.isResourceNotFoundError = async function isResourceNotFoundError(
+  request,
+  resource
+) {
+  const error = await expect(request).to.eventually.be.rejected
+
+  const response = error.response
+
+  expect(response).to.have.property('status', 404)
+
+  expect(response).to.have.nested.property(
+    'data.error.name',
+    'ResourceNotFoundError'
+  )
+  expect(response).to.have.nested.property('data.error.resource', resource)
+}

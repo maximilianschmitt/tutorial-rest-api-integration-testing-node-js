@@ -2,6 +2,7 @@ const express = require('express')
 const { MongoClient } = require('mongodb')
 const bodyParser = require('body-parser')
 const ValidationError = require('./errors/ValidationError')
+const ResourceNotFoundError = require('./errors/ResourceNotFoundError')
 
 const PORT = process.env.PORT || 3000
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
@@ -36,6 +37,10 @@ async function main() {
   app.use(function handleErrors(err, req, res, next) {
     if (err instanceof ValidationError) {
       return res.status(400).json({ error: err })
+    }
+
+    if (err instanceof ResourceNotFoundError) {
+      return res.status(404).json({ error: err })
     }
 
     next(err)

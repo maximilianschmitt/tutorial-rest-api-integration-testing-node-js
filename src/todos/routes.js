@@ -25,4 +25,17 @@ router.post('/todos', function(req, res, next) {
     .catch(next)
 })
 
+router.patch('/todos/:todoId', function(req, res, next) {
+  const { db, body } = req
+
+  const { todoId } = req.params
+
+  const todosService = new TodosService(db)
+
+  todosService
+    .patchTodo(todoId, body)
+    .then(todo => res.status(200).json({ todo }))
+    .catch(next)
+})
+
 module.exports = router
