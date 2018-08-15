@@ -1,0 +1,18 @@
+{
+  "name": "todoman-backend",
+  "scripts": {
+    "dev": "nodemon src/main"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  }
+}
